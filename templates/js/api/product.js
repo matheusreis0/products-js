@@ -18,8 +18,19 @@ function getData(id = '') {
     });
 };
 
-function sendData(data, id = '') {
-    console.log('sent', data);
+function sendData(data, method, id = '') {
+    $.ajax({
+        type : method,
+        url : product_endpoint + id,
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: () => {
+            getData();
+        },
+        error: (e) => {
+            console.log('api erro')
+        }
+    });
 }
 
 function deleteData(id) {
