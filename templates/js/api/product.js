@@ -13,7 +13,7 @@ function getData(id = '') {
             }
         },
         error: (e) => {
-            console.log('api erro')
+            $('.msg.error').html('<p>Erro ao acessar API</p>');
         }
     });
 };
@@ -28,7 +28,7 @@ function sendData(data, method, id = '') {
             getData();
         },
         error: (e) => {
-            console.log('api erro')
+            $('.msg.error').html('<p>Erro ao acessar API</p>');
         }
     });
 }
@@ -42,7 +42,7 @@ function deleteData(id) {
             getData();
         },
         error: (e) => {
-            console.log('api erro')
+            $('.msg.error').html('<p>Erro ao acessar API</p>');
         }
     });
 }
