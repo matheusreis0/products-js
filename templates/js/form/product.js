@@ -38,9 +38,7 @@ function toJson(data) {
     return obj
 }
 
-$('form').submit( (event) => {
-    event.preventDefault();
-    let values = $(event.target).serializeArray();
+function sendDataToApi() {
     data = toJson(values);
     id = data.id;
     delete data.id;
@@ -48,7 +46,27 @@ $('form').submit( (event) => {
     if (id) {
         sendData(data, 'PUT', id);
     } else {
-        console.log(JSON.stringify(data));
         sendData(data, 'POST');
+    }
+}
+
+$('form').submit( (event) => {
+    event.preventDefault();
+    let message = '';
+    let values = $(event.target).serializeArray();
+
+    $('.msg-error').html('');
+
+    values.forEach(e => {
+        $("[name='"+e['name']+"']").removeClass('input-error');
+        if(e['value'].trim() == '' && e['name'] != 'id') {
+            message += '<p>* O campo '+e['name']+' precisa ser preenchido! </p>';
+            $("[name='"+e['name']+"']").addClass('input-error');
+        }
+    });
+    $('.msg-error').html(message);
+
+    if (message == '') {
+        sendDataToApi(values);
     }
 });
