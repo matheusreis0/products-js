@@ -1,26 +1,34 @@
 var product_endpoint = 'http://localhost:5000/api/product/'
 
-function request(method, id = '') {
+function getData(id = '') {
     $.ajax({
-        type : method,
+        type : 'GET',
         url : product_endpoint + id,
         dataType : 'json',
-        success: () => {
-            get_all();
+        success: (data) => {
+            if (id !== '') {
+                loadFormData(data);
+            } else {
+                load_table(data);
+            }
         },
         error: (e) => {
             console.log('api erro')
         }
     });
+};
+
+function sendData(data, id = '') {
+    console.log('sent', data);
 }
 
-function get_all() {
+function deleteData(id) {
     $.ajax({
-        type : 'GET',
-        url : product_endpoint,
+        type : 'DELETE',
+        url : product_endpoint + id,
         dataType : 'json',
-        success: (data) => {
-            load_table(data);
+        success: () => {
+            getData();
         },
         error: (e) => {
             console.log('api erro')
@@ -45,17 +53,27 @@ function load_table(data) {
 
     $('table tbody').html(data).promise().done( () => {
         $('.btn-edit').click( (event)=> {
-            showForm(event)
+            showForm(event);
+            id = getItemId(event);
+            getData(id);
         } );
         $('.btn-delete').click( (event)=> {
             id = getItemId(event);
             answer = confirm('Deletar?')
             if (answer) {
-                request('DELETE', id);
+                deleteData(id);
             }
-            get_all();
         });
     });
 }
 
-$(document).ready(() => get_all());
+function loadFormData(data) {
+    $("[name='id']").val(data.id);
+    $("[name='name'").val(data.name);
+    $("[name='description']").val(data.description);
+    $("[name='price']").val(data.price);
+    $("[name='status']").val(data.status);
+    $("[name='approved']").val(data.approved);
+}
+
+$(document).ready(() => getData());
