@@ -8,7 +8,7 @@ function loadResource(url, selector){
     });
 }
 
-function btnClick(event){
+function showForm(event){
     event.preventDefault();
     url = $(event.target).attr('href');
     resource = '#form';
@@ -16,4 +16,12 @@ function btnClick(event){
     $('#form').show(); 
 }
 
-$('.btn-new').click( (event) => btnClick(event) );
+function btnDelete(event) {
+    event.preventDefault();
+    let id = $(event.target).parent().data("id");
+    console.log('delete', id);
+}
+
+$(document).ready(() => {
+    $('.btn-new').click( (event) => showForm(event) );
+});

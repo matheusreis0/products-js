@@ -23,13 +23,16 @@ function load_table(data) {
             <td width="10%">${item['status']}</td>"
             <td width="10%">${item['approved']}</td>"
             <td width="15%" data-id="${item['id']}">
-                <a class='btn-edit' href='#'>Editar</a> |
+                <a class='btn-edit' href="product/form.html">Editar</a> |
                 <a class='btn-delete' href='#'>Deletar</a>
             </td>
         </tr>`;
     });
 
-    $('table tbody').html(data);
+    $('table tbody').html(data).promise().done( () => {
+        $('.btn-edit').click( (event)=>showForm(event) );
+        $('.btn-delete').click( (event)=>btnDelete(event) );
+    });
 }
 
 $(document).ready(() => get_all());
