@@ -4,5 +4,5 @@ function loadFormData(data) {
     $("[name='description']").val(data.description);
     $("[name='price']").val(data.price);
     $("[name='status']").val(data.status);
-    $("[name='approved']").val(data.approved);
+    $("[name='approved']").prop('checked', data.approved);
 }

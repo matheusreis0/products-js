@@ -9,7 +9,7 @@ function getData(id = '') {
             if (id !== '') {
                 loadFormData(data);
             } else {
-                load_table(data);
+                loadTable(data);
             }
         },
         error: (e) => {
@@ -36,7 +36,7 @@ function deleteData(id) {
     });
 }
 
-function load_table(data) {
+function loadTable(data) {
     data.forEach((item) => {
         data += `<tr>
             <td width="15%">${item['name']}</td>"
