@@ -19,7 +19,13 @@ function showForm(event){
 function btnDelete(event) {
     event.preventDefault();
     let id = $(event.target).parent().data("id");
-    console.log('delete', id);
+    return id;
+}
+
+function getItemId(event) {
+    event.preventDefault();
+    let id = $(event.target).parent().data("id");
+    return id;
 }
 
 $(document).ready(() => {

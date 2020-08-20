@@ -1,5 +1,19 @@
 var product_endpoint = 'http://localhost:5000/api/product/'
 
+function request(method, id = '') {
+    $.ajax({
+        type : method,
+        url : product_endpoint + id,
+        dataType : 'json',
+        success: () => {
+            get_all();
+        },
+        error: (e) => {
+            console.log('api erro')
+        }
+    });
+}
+
 function get_all() {
     $.ajax({
         type : 'GET',
@@ -30,8 +44,17 @@ function load_table(data) {
     });
 
     $('table tbody').html(data).promise().done( () => {
-        $('.btn-edit').click( (event)=>showForm(event) );
-        $('.btn-delete').click( (event)=>btnDelete(event) );
+        $('.btn-edit').click( (event)=> {
+            showForm(event)
+        } );
+        $('.btn-delete').click( (event)=> {
+            id = getItemId(event);
+            answer = confirm('Deletar?')
+            if (answer) {
+                request('DELETE', id);
+            }
+            get_all();
+        });
     });
 }
 
