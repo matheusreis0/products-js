@@ -15,6 +15,26 @@ function toJson(data) {
     obj['price'] = parseFloat(data[3].value);
     obj['status'] = data[4].value;
     obj['approved'] = data[5] !== undefined ? true : false;
+
+    obj['origin'] = 'empty';
+    obj['sku'] = 'empty';
+    obj['seller_id'] = 'empty';
+    obj['product_code'] = 'empty';
+    obj['gtin'] = 'empty';
+    obj['brand'] = 'empty';
+    obj['free_shipping'] = false;
+    obj['group_id'] = 'empty';
+    obj['tax_information_id'] = 'empty';
+    obj['rejection_reasons'] = 'empty';
+    obj['active'] = false;
+    obj['part_number'] = 'empty';
+    obj['in_campaign'] = false;
+    obj['odin'] = 'empty';
+    obj['waiting_invoice'] = false;
+    obj['controller_gtin_id'] = 'empty';
+    obj['currency'] = 'BRL';
+    obj['offer'] = 0;
+
     return obj
 }
 
@@ -28,6 +48,7 @@ $('form').submit( (event) => {
     if (id) {
         sendData(data, 'PUT', id);
     } else {
+        console.log(JSON.stringify(data));
         sendData(data, 'POST');
     }
 });
