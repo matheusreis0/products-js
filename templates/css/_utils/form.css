@@ -9,3 +9,14 @@
 .input-error {
     border:#f00 1px solid;
 }
+
+div .btn-close {
+    margin: auto;
+    text-align: right;
+}
+.btn-close a {
+    color: #f00;
+}
+.btn-close a:hover {
+    cursor: pointer;
+}

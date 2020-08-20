@@ -70,3 +70,7 @@ $('form').submit( (event) => {
         sendDataToApi(values);
     }
 });
+
+$(document).ready(() => {
+    $('.btn-close').click( () => closeForm(event));
+});

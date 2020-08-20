@@ -16,6 +16,11 @@ function showForm(event){
     $('#form').show(); 
 }
 
+function closeForm(event){
+    event.preventDefault();
+    $('#form').html(''); 
+}
+
 function btnDelete(event) {
     event.preventDefault();
     let id = $(event.target).parent().data("id");
