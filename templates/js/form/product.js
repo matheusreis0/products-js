@@ -38,7 +38,7 @@ function toJson(data) {
     return obj
 }
 
-function sendDataToApi() {
+function sendDataToApi(values) {
     data = toJson(values);
     id = data.id;
     delete data.id;
@@ -54,6 +54,7 @@ $('form').submit( (event) => {
     event.preventDefault();
     let message = '';
     let values = $(event.target).serializeArray();
+    console.log(values);
 
     $('.msg-error').html('');
 
