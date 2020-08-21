@@ -1,0 +1,23 @@
+<div id="product-form">
+    <div class="msg-error"></div>
+    <form action="#" method="POST">
+        <div class="btn-close"><a>X</a></div>
+        <input type="hidden" name="id" id="id" readonly>
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name">
+        <label for="description">Descrição:</label>
+        <input type="text" name="description" id="description">
+        <label for="price">Preço:</label>
+        <input type="number" name="price" id="price">
+        <label for="status">Status:</label>
+        <input type="text" name="status" id="status">
+        <label for="approved">Aprovado:</label>
+        <input type="checkbox" name="approved" id="approved">
+        <div class="buttons"> 
+            <button type="submit" class="save">Salvar</button>
+            <button type="reset" class="clean">Limpar</button>
+        </div>
+    </form>   
+</div>
+<link rel="stylesheet" href="../css/_utils/form.css">
+<script src="../js/form/product.js"></script>

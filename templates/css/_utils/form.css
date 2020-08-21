@@ -1,0 +1,74 @@
+form {
+    width: 40%;
+    margin: auto;
+    margin-top: 1em;
+    border: 1px solid #1fe6a8;
+    padding: 1em 2em;
+}
+form input, form textarea {
+    vertical-align: top;
+    display: inline-block;
+    border: 1px solid #1fe6a8;
+    width: 40%;
+    font-size: 12px;
+}
+form label {
+    vertical-align: top;
+    text-align: right;
+    display: inline-block;
+    width: 35%;
+    padding: 0 .5em;
+} 
+form .buttons {
+    width: 40%;
+    margin: 1em auto;
+}
+form .buttons .save, form .buttons .clean { 
+    padding: .2em 1em;
+    border: none;
+    cursor: pointer;
+    text-transform: lowercase;
+}
+form .buttons .save {
+    background: #0c29d0;
+    color:#fff;
+    border:1px solid  #0c29d0;
+}
+form .buttons .save:hover {
+    background: #fff;
+    color:#0c29d0;
+    border:1px solid  #0c29d0;
+}
+form .buttons .clean {
+    background: #fff;
+    border:1px solid  #ffffff;
+    color:#F7BC1C;
+}
+form .buttons .clean:hover { 
+    background: #F7BC1C;
+    color:#fff;
+    border:1px solid  #F7BC1C;
+}
+
+.msg-error {
+    font-size: 16px;
+    text-align: center;
+    color: #f00;
+}
+.msg-error p {
+    margin: 0.2em 0;
+}
+.input-error {
+    border:#f00 1px solid;
+}
+
+div .btn-close {
+    margin: auto;
+    text-align: right;
+}
+.btn-close a {
+    color: #f00;
+}
+.btn-close a:hover {
+    cursor: pointer;
+}

@@ -10,11 +10,12 @@ header {
 }
 
 header #logo {
+    text-align: center;
     display: inline-block;
     vertical-align: top;
     width: 10%;
     padding: 0 2%;
-    margin-top: -10px;
+    margin-top: -5px;
     color:#fff;
 }
 header #logo a {
