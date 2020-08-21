@@ -54,7 +54,6 @@ $('form').submit( (event) => {
     event.preventDefault();
     let message = '';
     let values = $(event.target).serializeArray();
-    console.log(values);
 
     $('.msg-error').html('');
 
