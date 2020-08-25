@@ -1,4 +1,7 @@
+var product_obj = {};
+
 function loadFormData(data) {
+    product_obj = data;
     $("[name='id']").val(data.id);
     $("[name='name'").val(data.name);
     $("[name='description']").val(data.description);
@@ -16,27 +19,26 @@ function toJson(data) {
     obj['status'] = data[4].value;
     obj['approved'] = data[5] !== undefined ? true : false;
 
-    // Atualiza os campos mesmo no update
-    obj['origin'] = 'empty';
-    obj['sku'] = 'empty';
-    obj['seller_id'] = '61bd5305-e295-4a13-9dc4-d46e0502edb4';
-    obj['product_code'] = 'empty';
-    obj['gtin'] = 'empty';
-    obj['brand'] = 'empty';
-    obj['free_shipping'] = false;
-    obj['group_id'] = 'empty';
-    obj['tax_information_id'] = '61bd5305-e295-4a13-9dc4-d46e0502edb4';
-    obj['rejection_reasons'] = 'empty';
-    obj['active'] = false;
-    obj['part_number'] = 'empty';
-    obj['in_campaign'] = false;
-    obj['odin'] = 'empty';
-    obj['waiting_invoice'] = false;
-    obj['controller_gtin_id'] = '61bd5305-e295-4a13-9dc4-d46e0502edb4';
-    obj['currency'] = 'BRL';
-    obj['offer'] = 0;
+    obj['origin'] = product_obj.origin ? product_obj.origin : 'empty';
+    obj['sku'] = product_obj.sku ? product_obj.sku : 'empty';
+    obj['seller_id'] = product_obj.seller_id ? product_obj.seller_id : '61bd5305-e295-4a13-9dc4-d46e0502edb4';
+    obj['product_code'] = product_obj.product_code ? product_obj.product_code : 'empty';
+    obj['gtin'] = product_obj.gtin ? product_obj.gtin : 'empty';
+    obj['brand'] = product_obj.brand ? product_obj.brand : 'empty';
+    obj['free_shipping'] = product_obj.free_shipping ? product_obj.free_shipping : false;
+    obj['group_id'] = product_obj.group_id ? product_obj.group_id : 'empty';
+    obj['tax_information_id'] = product_obj.tax_information_id ? product_obj.tax_information_id : '61bd5305-e295-4a13-9dc4-d46e0502edb4';
+    obj['rejection_reasons'] = product_obj.rejection_reasons ? product_obj.rejection_reasons : {};
+    obj['active'] = product_obj.active ? product_obj.active : false;
+    obj['part_number'] = product_obj.part_number ? product_obj.part_number : 'empty';
+    obj['in_campaign'] = product_obj.in_campaign ? product_obj.in_campaign : false;
+    obj['odin'] = product_obj.odin ? product_obj.odin : 'empty';
+    obj['waiting_invoice'] = product_obj.waiting_invoice ? product_obj.waiting_invoice : false;
+    obj['controller_gtin_id'] = product_obj.controller_gtin_id ? product_obj.controller_gtin_id : '61bd5305-e295-4a13-9dc4-d46e0502edb4';
+    obj['currency'] = product_obj.currency ? product_obj.currency : 'BRL';
+    obj['offer'] = product_obj.offer ? product_obj.offer : obj.price;
 
-    return obj
+    return obj;
 }
 
 function sendDataToApi(values) {
