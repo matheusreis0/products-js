@@ -1,9 +1,13 @@
-var product_endpoint = 'http://localhost:5000/api/product/'
+var product_endpoint = 'http://localhost:8000/api/product/'
+
+function getUrl(id) {
+    return id ? product_endpoint + id + '/' : product_endpoint;
+}
 
 function getData(id = '') {
     $.ajax({
         type : 'GET',
-        url : product_endpoint + id,
+        url : getUrl(id),
         dataType : 'json',
         success: (data) => {
             if (id !== '') {
@@ -21,7 +25,7 @@ function getData(id = '') {
 function sendData(data, method, id = '') {
     $.ajax({
         type : method,
-        url : product_endpoint + id,
+        url : getUrl(id),
         contentType: 'application/json',
         data: JSON.stringify(data),
         success: () => {
@@ -36,7 +40,7 @@ function sendData(data, method, id = '') {
 function deleteData(id) {
     $.ajax({
         type : 'DELETE',
-        url : product_endpoint + id,
+        url : getUrl(id),
         dataType : 'json',
         success: () => {
             getData();
